@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onefew.springboot.mapper.StudentMapper">
+
+    <!-- type为实体类Student，包名已经配置，可以直接写类名 -->
+    <resultMap id="stuMap" type="com.onefew.springboot.domain.Student">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="sumScore" column="password" />
+        <result property="avgScore" column="phone" />
+        <result property="age" column="password" />
+    </resultMap>
+
+    <select id="getById" resultMap="stuMap" parameterType="java.lang.Integer">
+        SELECT *
+        FROM t_student
+        WHERE id = #{id}
+    </select>
+
+    <select id="likeName" resultMap="stuMap" parameterType="string" >
+        SELECT *
+        FROM t_student
+        WHERE NAME LIKE CONCAT('%',#{name},'%')
+    </select>
+
+    <select id="getNameById" resultType="string">
+        SELECT NAME
+        FROM STUDENT
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
